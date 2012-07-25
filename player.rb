@@ -7,23 +7,16 @@ class Player
   def play_turn(warrior)
   p @drctn
    chckhlth(warrior)
-    if !pvt?(warrior)
+
       if !cptv(warrior)
         if !bttl(warrior)
             nxt(warrior)
         end
-      end
+
     end
   end
 ####################
-  def pvt?(warrior)
-    if 
-      warrior.feel.wall?
-      warrior.pivot!(:backward)
-    else
-      false
-    end
-  end
+
 #####################
   def cptv(warrior)
     if 
