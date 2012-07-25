@@ -1,19 +1,14 @@
 class Player
-    def initialize
-        @health = 20
-        @drctn = :forward 
-    end
+    
     ##################
     def play_turn(warrior)
-        p @drctn
         chckhlth(warrior)
         if !cptv(warrior)
             if !bttl(warrior)
-                nxt(warrior)
-                
-                
+                if !nxt(warrior)
+                    !chckhlth(warrior)
+                end
             end
-            
         end
     end
     #####################
@@ -27,26 +22,27 @@ class Player
     end
     ####################
     def nxt(warrior)
+        
         if 
-            @dmg
-            if 
-                @health < 12
-                rtrt(warrior)
-                else
-                warrior.walk!(:forward)
-            end
+            @health < 14
             else
-            if 
-                @health < 20
-                warrior.shoot!
-                elsif
-                false
+            true
+        end
+        else
+        if 
+            @health < 20
+            warrior.shoot!
+            elsif
+            false
+            else
+            if warrior.walk!
                 else
-                if !empty?(warrior)
+                if 
+                    warrior.feel.empty?
+                    warrior.walk!
                     else
                     false
                 end
-                
             end
         end
     end
@@ -59,19 +55,17 @@ class Player
         end
         if 
             hlth < @health
-            @dmg = true
             else
-            @dmg = false
+            if 
+                warrior.feel.empty?
+                else 
+                if !empty?(warrior)
+                    else
+                    false
+                end
+            end
         end
         @health = hlth
-    end
-    ####################
-    def rtrt(warrior)
-        if :forward == :forward
-            warrior.walk!(:backward)
-            else
-            warrior.walk!(:backward)
-        end
     end
     ####################
     def bttl(warrior)
@@ -86,7 +80,8 @@ class Player
     def empty?(warrior)
         if 
             warrior.feel.empty?
-            warrior.walk!  
+            elsif 
+            warrior.look  
             else
             false  
         end
