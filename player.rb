@@ -10,6 +10,8 @@ class Player
         if !cptv(warrior)
             if !bttl(warrior)
                 nxt(warrior)
+                
+                
             end
             
         end
@@ -36,9 +38,15 @@ class Player
             else
             if 
                 @health < 20
-                warrior.rest!
+                warrior.shoot!
+                elsif
+                false
                 else
-                warrior.walk!(:forward)
+                if !empty?(warrior)
+                    else
+                    false
+                end
+                
             end
         end
     end
@@ -60,9 +68,9 @@ class Player
     ####################
     def rtrt(warrior)
         if :forward == :forward
-            warrior.walk!(:forward)
+            warrior.walk!(:backward)
             else
-            warrior.rest!
+            warrior.walk!(:backward)
         end
     end
     ####################
@@ -75,18 +83,13 @@ class Player
         end
     end
     ####################
-    def lok(warrior)
+    def empty?(warrior)
         if 
-            warrior.look
-            #variables
-        end 
-    end
-    ###################
-    def sht(warrior)
-        if 
-            warrior.shoot!(:forward)
-            #variables
+            warrior.feel.empty?
+            warrior.walk!  
+            else
+            false  
         end
     end
-    ##################
+    ##########
 end
