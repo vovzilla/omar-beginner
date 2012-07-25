@@ -1,4 +1,3 @@
-git remote add origin https://github.com/vovzilla/omar-beginner.git
 class Player
   def initialize
     @health = 20
