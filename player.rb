@@ -1,17 +1,19 @@
 class Player
     
     ##################
+    
     def play_turn(warrior)
         chckhlth(warrior)
         if !cptv(warrior)
             if !bttl(warrior)
                 if !nxt(warrior)
-                    !chckhlth(warrior)
                 end
             end
         end
     end
+    
     #####################
+    
     def cptv(warrior)
         if 
             warrior.feel.captive?
@@ -20,33 +22,35 @@ class Player
             false
         end
     end
+    
     ####################
-    def nxt(warrior)
-        
+    
+    def fnlz(warrior)
         if 
-            @health < 14
+            warrior.health < 20
+            warrior.walk!
+            elsif 
+            warrior.health < 20
+            warrior.rest!  
             else
-            true
+            false  
         end
-        else
+    end
+    
+    ####################
+    
+    def nxt(warrior)
         if 
             @health < 20
             warrior.shoot!
-            elsif
-            false
             else
-            if warrior.walk!
-                else
-                if 
-                    warrior.feel.empty?
-                    warrior.walk!
-                    else
-                    false
-                end
-            end
+            false
+            warrior.walk!
         end
     end
+    
     ####################
+    
     def chckhlth(warrior)
         hlth = warrior.health
         if 
@@ -57,17 +61,20 @@ class Player
             hlth < @health
             else
             if 
-                warrior.feel.empty?
-                else 
-                if !empty?(warrior)
-                    else
-                    false
-                end
+                warrior.health < 9
+                warrior.walk!
+                elsif 
+                warrior.health < 9
+                warrior.rest!
+                else
+                true
             end
         end
         @health = hlth
     end
+    
     ####################
+    
     def bttl(warrior)
         if 
             warrior.feel(:forward).enemy?
@@ -76,15 +83,6 @@ class Player
             false
         end
     end
-    ####################
-    def empty?(warrior)
-        if 
-            warrior.feel.empty?
-            elsif 
-            warrior.look  
-            else
-            false  
-        end
-    end
+    
     ##########
 end
