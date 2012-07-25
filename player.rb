@@ -1,7 +1,7 @@
 class Player
     def initialize
         @health = 20
-        @drctn = :forward
+        @drctn = :forward 
     end
     ##################
     def play_turn(warrior)
@@ -11,15 +11,13 @@ class Player
             if !bttl(warrior)
                 nxt(warrior)
             end
-
+            
         end
     end
-    ####################
-
     #####################
     def cptv(warrior)
-        if
-            warrior.feel(:forward).captive?
+        if 
+            warrior.feel.captive?
             warrior.rescue!(:forward)
             else
             false
@@ -27,16 +25,16 @@ class Player
     end
     ####################
     def nxt(warrior)
-        if
+        if 
             @dmg
-            if
+            if 
                 @health < 12
                 rtrt(warrior)
                 else
                 warrior.walk!(:forward)
             end
             else
-            if
+            if 
                 @health < 20
                 warrior.rest!
                 else
@@ -47,11 +45,11 @@ class Player
     ####################
     def chckhlth(warrior)
         hlth = warrior.health
-        if
+        if 
             hlth == 20
             @health = 20
         end
-        if
+        if 
             hlth < @health
             @dmg = true
             else
@@ -62,29 +60,30 @@ class Player
     ####################
     def rtrt(warrior)
         if :forward == :forward
-            warrior.walk!(:backward)
-            else
             warrior.walk!(:forward)
+            else
+            warrior.rest!
         end
     end
     ####################
     def bttl(warrior)
-        if
+        if 
             warrior.feel(:forward).enemy?
-            else
             warrior.shoot!(:forward)
+            else
+            false
         end
     end
     ####################
     def lok(warrior)
-        if
+        if 
             warrior.look
             #variables
-        end
+        end 
     end
     ###################
     def sht(warrior)
-        if
+        if 
             warrior.shoot!(:forward)
             #variables
         end
